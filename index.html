@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso Cantinho Virtual</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
+    }
+    h1 {
+        margin-top: 40px;
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    .date {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+    .button {
+        background-color: #ff4081;
+        border: none;
+        color: white;
+        padding: 15px 25px;
+        font-size: 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .button:hover {
+        background-color: #e91e63;
+    }
+    #message {
+        margin-top: 20px;
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+    .heart {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background: red;
+        transform: rotate(45deg);
+        animation: fall 5s linear infinite;
+    }
+    .heart:before, .heart:after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+    }
+    .heart:before {
+        top: -10px;
+        left: 0;
+    }
+    .heart:after {
+        left: 10px;
+        top: 0;
+    }
+    @keyframes fall {
+        0% {
+            transform: translateY(-10%) rotate(45deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(110vh) rotate(45deg);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<h1>Vinícius ❤️</h1>
+<h2>Bem-vindo ao nosso cantinho virtual</h2>
+<div class="date">08/11/2022 - Nosso primeiro contato</div>
+
+<button class="button" onclick="showMessage()">Clique para ver uma mensagem</button>
+<div id="message"></div>
+
+<!-- Música -->
+<audio autoplay loop>
+    <source src="https://www.dropbox.com/scl/fi/y5l7p92khh0dqf7oz18co/velha-infncia.mp3?dl=1" type="audio/mp3">
+    Seu navegador não suporta áudio.
+</audio>
+
+<script>
+    const messages = [
+        "Você é meu pedacinho de paz ❤️",
+        "Cada dia longe de você é um dia de saudade 💌",
+        "Nosso amor é infinito, igual aos corações caindo daqui 💕",
+        "Te amo do jeitinho que você é 🌹"
+    ];
+
+    function showMessage() {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        document.getElementById('message').innerText = messages[randomIndex];
+    }
+
+    // Corações animados
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
